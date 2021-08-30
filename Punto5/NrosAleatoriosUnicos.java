@@ -44,9 +44,7 @@ public class NrosAleatoriosUnicos {
 
     public static int getIndice(ArrayList nros){
         int tope = nros.size();
-        System.out.println("Tope: "+tope);
         int indice = (int) (Math.random()*(tope));
-        System.out.println("Indice: "+indice);
         return indice;
     }
 }
