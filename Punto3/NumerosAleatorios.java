@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class NumerosAleatorios {
     static final int MIN_VALOR = -100;
@@ -29,4 +28,6 @@ public class NumerosAleatorios {
             System.err.println("Error leyendo o escribiendo en algun archivo.");
         }
     }
+
+
 }
