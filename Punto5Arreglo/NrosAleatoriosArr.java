@@ -41,14 +41,13 @@ public class NrosAleatoriosArr {
 
     public static int getUnNumero(int[] nros, int tope){
         Random generator = new Random();
-        boolean ok = false;
-        int res = -1;
-        while(!ok){
+        int res=0;
+        int nro=-1;
+        while(nro == -1){
             res = generator.nextInt(tope)+1;
-            int nro = nros[res-1];
+            nro = nros[res-1];
             if(nro!=-1){
                 nros[res-1]=-1;
-                ok = true;
             }
         }
         return res;
