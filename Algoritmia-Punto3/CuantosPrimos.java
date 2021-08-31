@@ -14,6 +14,7 @@ public class CuantosPrimos {
         int cant=0;
         if(tope>=2) {
             cant=1;
+            System.out.println("Primo: "+2);
             for (int i = 3;i<=tope;i=i+2){
                 if(esPrimo(i)){
                     cant++;
