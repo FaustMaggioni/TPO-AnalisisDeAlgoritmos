@@ -1,4 +1,8 @@
+package ejemplos_InOut.TP0.Punto8;
 import java.util.Random;
+
+import static ejemplos_InOut.TP0.AlgoritmosOrdenamiento.quickSortArregloNrosReales;
+import static ejemplos_InOut.TP0.AlgoritmosOrdenamiento.arrayToString;
 
 public class NotasAlumnos {
     static int CANT_ALUMNOS = 20;
@@ -13,44 +17,8 @@ public class NotasAlumnos {
         System.out.println("Promedios alumnos: \n"+ arrayToString(promediosAlumnos));
         System.out.println("Media total: "+mediaTotal);
 
-        quickSort(promediosAlumnos,0,CANT_ALUMNOS-1);
+        quickSortArregloNrosReales(promediosAlumnos,0,CANT_ALUMNOS-1);
         System.out.println("Promedios alumnos: \n"+ arrayToString(promediosAlumnos));
-    }
-
-    private static void quickSort(double[] arr, int low, int high){
-        if (low < high){
-            int pi = partition(arr, low, high);
-            quickSort(arr, pi + 1, high);
-            quickSort(arr, low, pi - 1);
-        }
-    }
-
-    private static int partition(double[] arr, int low, int high) {
-        double pivot = arr[high];
-        int i = (low - 1);
-
-        for(int j = low; j <= high - 1; j++){
-            if (arr[j] > pivot){
-                i++;
-                swap(arr, i, j);
-            }
-        }
-        swap(arr, i + 1, high);
-        return (i + 1);
-    }
-
-    static void swap(double[] arr, int i, int j) {
-        double temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    private static String arrayToString(double[] promedios){
-        String res="-->";
-        for(int i=0; i<promedios.length; i++){
-            res=res+" "+promedios[i]+",";
-        }
-        return res;
     }
 
     private static int[][] getMatriz(){
@@ -67,7 +35,7 @@ public class NotasAlumnos {
 
     private static double[] mediaCadaAlumno(int[][] matriz){
         double[] promediosAlumnos = new double[CANT_ALUMNOS];
-        for(int i=0; i<CANT_ALUMNOS; i++){
+        for(int i=0; i < CANT_ALUMNOS; i++){
             int sumaAlumno=0;
             for(int j=0; j<CANT_MATERIAS; j++){
                 sumaAlumno=sumaAlumno+matriz[j][i];
