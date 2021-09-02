@@ -1,13 +1,12 @@
 package ejemplos_InOut.TP0.Punto8;
 import java.util.Random;
 
-import static ejemplos_InOut.TP0.AlgoritmosOrdenamiento.quickSortArregloNrosReales;
-import static ejemplos_InOut.TP0.AlgoritmosOrdenamiento.arrayToString;
+import static ejemplos_InOut.TP0.AlgoritmosOrdenamiento.AlgoritmosOrdenamiento.*;
 
 public class NotasAlumnos {
-    static int CANT_ALUMNOS = 20;
+    static int CANT_ALUMNOS = 100;
     static int CANT_MATERIAS = 5;
-    static int MAX_NOTA = 10;
+    static int MAX_NOTA = 100;
     public static void main(String[] args){
         int[][] notasAlumnos = getMatriz();
         double[] promediosAlumnos = mediaCadaAlumno(notasAlumnos);
@@ -17,7 +16,14 @@ public class NotasAlumnos {
         System.out.println("Promedios alumnos: \n"+ arrayToString(promediosAlumnos));
         System.out.println("Media total: "+mediaTotal);
 
+        double ti = System.nanoTime();
+
         quickSortArregloNrosReales(promediosAlumnos,0,CANT_ALUMNOS-1);
+        //mergeSortArregloNrosReales(promediosAlumnos,0,CANT_ALUMNOS-1);
+
+        double tf = System.nanoTime();
+        double tt = tf-ti;
+        System.out.println("tiempo: "+tt);
         System.out.println("Promedios alumnos: \n"+ arrayToString(promediosAlumnos));
     }
 
