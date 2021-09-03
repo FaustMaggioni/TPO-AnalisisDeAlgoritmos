@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -13,7 +11,7 @@ public class NrosAleatoriosHash {
         double tiempoInicial = System.nanoTime();
         Random generador = new Random();
         int min=1;
-        Hashtable<Integer, Integer> hash = new Hashtable<>();
+        Hashtable<Integer, Integer> hash = new Hashtable<>(tope);
         int contNum = 0;
         int contErrores = 0;
         try{

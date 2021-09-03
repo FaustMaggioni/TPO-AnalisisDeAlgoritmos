@@ -1,5 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+package ejemplos_InOut.TP0.Punto3;
+
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

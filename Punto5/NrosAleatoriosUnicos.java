@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,17 +7,21 @@ import java.util.Random;
 
 public class NrosAleatoriosUnicos {
     static int cantNros = 1000;
+    static Random generador = new Random();
     public static void main(String[] args) {
-        double tiempoInicial = System.nanoTime();
         ArrayList nros = crearLista(cantNros);
         try{
             BufferedWriter buff = new BufferedWriter(new FileWriter("./numerosUnicos.txt"));
+            double tiempoInicial = System.nanoTime();
             for(int i=1; i<=cantNros;i++) {
                 int indice = getIndice(nros);
                 int nuevoNro = getUnNumero(nros, indice);
                 nros.remove(indice);
                 buff.write(nuevoNro + "\n");
             }
+            double tiempoFinal = System.nanoTime();
+            double tiempoTotal = tiempoFinal-tiempoInicial;
+            System.out.println("Tiempo: "+tiempoTotal+"ns");
             buff.close();
         } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage() + "\nSignifica que el archivo del "
@@ -27,15 +29,11 @@ public class NrosAleatoriosUnicos {
         }
         catch (IOException ex) {
             System.err.println("Error leyendo o escribiendo en algun archivo.");
-        }finally {
-            double tiempoFinal = System.nanoTime();
-            double tiempoTotal = tiempoFinal-tiempoInicial;
-            System.out.println("Tiempo: "+tiempoTotal+"ns");
         }
     }
 
     public static ArrayList crearLista(int cantNros){
-        ArrayList<Integer> nros = new ArrayList<Integer>();
+        ArrayList<Integer> nros = new ArrayList<Integer>(cantNros);
         for(int i=1;i<=cantNros;i++){
             nros.add(i);
         }
@@ -48,11 +46,10 @@ public class NrosAleatoriosUnicos {
     }
 
     public static int getIndice(ArrayList nros){
-        //Random generador = new Random();
         int min=1;
         int tope = nros.size();
-        //int indice = generador.nextInt(tope);
-        int indice = (int) (Math.random()*tope);
+        int indice = generador.nextInt(tope);
+        //int indice = (int) (Math.random()*tope);
         return indice;
     }
 }

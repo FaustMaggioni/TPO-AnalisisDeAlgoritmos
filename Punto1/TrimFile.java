@@ -21,7 +21,7 @@ public class TrimFile {
 
             while ((linea = bufferLectura.readLine()) != null) {
                 String nuevaLinea = null;
-                for(int i=0; i< linea.length(); i++){
+                for(int i=0; i<linea.length(); i++){
                     char simbolo = linea.charAt(i);
                     if( simbolo != ' '){
                         if(nuevaLinea == null){
