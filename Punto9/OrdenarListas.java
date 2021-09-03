@@ -21,7 +21,10 @@ public class OrdenarListas {
         System.out.println("Lista A: "+listaA);
         System.out.println("Lista B: "+listaB);
 
+        double ti = System.nanoTime();
         ArrayList listaC = crearListaAPartirDe(listaA,listaB);
+        double tf = System.nanoTime();
+        System.out.println("Tiempo: "+(tf-ti));
         System.out.println("Lista C: "+listaC);
 
     }
@@ -36,16 +39,22 @@ public class OrdenarListas {
 
     public static ArrayList<Integer> crearListaAPartirDe(ArrayList listaA, ArrayList listaB){
         ArrayList<Integer> listaC = new ArrayList<>();
-        int tamA = listaA.size();
-        int tamB = listaB.size();
-        for (int i=0; i<tamA; i++){
-            int nuevo = (int) listaA.get(i);
-            listaC.add(nuevo);
+
+        int elemA = (int) listaA.get(0);
+        int elemB = (int) listaB.get(0);
+
+        while(!listaA.isEmpty() || !listaB.isEmpty()){
+            if(!listaA.isEmpty() && (listaB.isEmpty() || elemA >= elemB)){
+                listaC.add(elemA);
+                listaA.remove(0);
+                if (!listaA.isEmpty()) elemA = (int) listaA.get(0);
+            }else{
+                listaC.add(elemB);
+                listaB.remove(0);
+                if (!listaB.isEmpty()) elemB = (int) listaB.get(0);
+            }
         }
-        for (int i=0; i<tamB; i++){
-            int nuevo = (int) listaB.get(i);
-            listaC.add(nuevo);
-        }
+
         return listaC;
     }
 }
